@@ -1,6 +1,6 @@
 package com.portfolio.sms.Interface;
 
-import com.portfolio.sms.Entity.Persona;
+import com.portfolio.sms.entity.Persona;
 
 import java.util.List;
 
