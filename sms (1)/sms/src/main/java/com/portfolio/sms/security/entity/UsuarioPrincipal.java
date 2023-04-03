@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 
 public class UsuarioPrincipal implements UserDetails {
+    private int id;
     private String nombre;
     private String nombreUsuario;
     private String email;
@@ -20,6 +21,7 @@ public class UsuarioPrincipal implements UserDetails {
     //constructor
     public UsuarioPrincipal(String nombre, String nombreUsuario, String email, String password
             , Collection<? extends GrantedAuthority> authorities) {
+        this.id = id ;
         this.nombre = nombre;
         this.nombreUsuario = nombreUsuario;
         this.email = email;

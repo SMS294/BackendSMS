@@ -1,6 +1,6 @@
 package com.portfolio.sms.security.dto;
 
-import jakarta.validation.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
 
 public class LoginUsuario {
     @NotBlank

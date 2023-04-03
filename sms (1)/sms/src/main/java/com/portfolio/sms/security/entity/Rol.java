@@ -1,21 +1,19 @@
 package com.portfolio.sms.security.entity;
 
 import com.portfolio.sms.security.enums.RolNombre;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import javax.persistence.*;
 
 @Entity
 public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(nullable = false)
     @Enumerated (EnumType.STRING)
     private RolNombre rolNombre;
 
     //Constructor
 
-    public Rol(@NotNull RolNombre rolNombre) {
+    public Rol ( RolNombre rolNombre) {
 
         this.rolNombre = rolNombre;
     }

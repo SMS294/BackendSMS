@@ -1,7 +1,9 @@
 package com.portfolio.sms.controller;
+
 import com.portfolio.sms.entity.Persona;
 import com.portfolio.sms.Interface.IPersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
@@ -16,19 +18,19 @@ public class PersonaController {
     @GetMapping("personas/traer")
     public List<Persona> getPersona() {
         return ipersonaService.getPersona();}
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("personas/crear")
     public String createPersona(@RequestBody Persona persona){
         ipersonaService.savePersona(persona);
         return "la persona fue creada correctamente";
     }
-
+    @PreAuthorize( "hasRole('ADMIN' )")
     @DeleteMapping("personas/borrar/{id}")
     public String deletePersona(@PathVariable Long id){
         ipersonaService.deletePersona(id);
         return "la persona fue eliminada correctamente";
     }
-
+    @PreAuthorize( "hasRole('ADMIN' )")
     @PutMapping("personas/editar/{id}")
     public Persona editPersona(@PathVariable Long id,
                                @RequestParam ("nombre") String nuevoNombre,
@@ -42,6 +44,10 @@ public class PersonaController {
 
         ipersonaService.savePersona(persona);
         return persona;
+    }
+    @GetMapping("/persona/traer/perfil")
+    public Persona findpersona(){
+        return ipersonaService.findPersona(( long )1);
     }
 
 }

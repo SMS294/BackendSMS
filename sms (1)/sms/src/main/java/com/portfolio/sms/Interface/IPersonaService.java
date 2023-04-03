@@ -9,13 +9,13 @@ public interface IPersonaService {
     List<Persona> getPersona();
 
     //Guardar un objeto de tipo persona
-    void savePersona (Persona persona);
+     public void savePersona (Persona persona);
 
     //Eliminar un objeto pero lo llamamos por Id
-    void deletePersona(Long id);
+    public void deletePersona(Long id);
 
     //Buscar una persona por id
-    Persona findPersona(Long id) ;
+    public Persona findPersona(Long id) ;
 
 
 

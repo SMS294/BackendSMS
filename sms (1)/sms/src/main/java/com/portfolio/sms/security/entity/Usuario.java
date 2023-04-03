@@ -1,7 +1,7 @@
 package com.portfolio.sms.security.entity;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,10 +21,10 @@ public class Usuario {
     private String email;
     @NotNull
     private String password;
-    private String tokenPassword;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn (name = "usuario_id")
-            , inverseJoinColumns = @JoinColumn (name = "rol_id"))
+            , inverseJoinColumns = @JoinColumn(name = "rol_id"))
     private Set<Rol> roles = new HashSet<>();
 
     //Constructors
@@ -32,7 +32,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(@NotNull String nombre,@NotNull String nombreUsuario,@NotNull String email,@NotNull String password) {
+    public Usuario( String nombre, String nombreUsuario,String email, String password) {
         this.nombre = nombre;
         this.nombreUsuario = nombreUsuario;
         this.email = email;
@@ -82,12 +82,7 @@ public class Usuario {
         this.password = password;
     }
 
-    public String getTokenPassword(){
-        return tokenPassword;
-    }
-    public void setTokenPassword(String tokenPassword){
-        this.tokenPassword = tokenPassword;
-    }
+
 
     public Set<Rol> getRoles() {
         return roles;

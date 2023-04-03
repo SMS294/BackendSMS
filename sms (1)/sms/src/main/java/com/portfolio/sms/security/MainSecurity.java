@@ -11,16 +11,17 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import javax.validation.constraints.NotNull;
+
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity()
-public class MainSecurity  {
+@EnableMethodSecurity(prePostEnabled = true)
+public class MainSecurity   {
     @Autowired
     UserDetailsServiceImpl userDetailsServiceImpl;
     @Autowired
@@ -34,8 +35,9 @@ public class MainSecurity  {
 
     AuthenticationManager authenticationManager;
 
+
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(@NotNull HttpSecurity http) throws Exception {
     AuthenticationManagerBuilder builder = http.getSharedObject( AuthenticationManagerBuilder.class );
     builder.userDetailsService( userDetailsServiceImpl ).passwordEncoder( passwordEncoder );
     authenticationManager = builder.build();
@@ -45,15 +47,13 @@ public class MainSecurity  {
     http.cors();
     http.sessionManagement().sessionCreationPolicy( SessionCreationPolicy.STATELESS );
 
-    http.authorizeHttpRequests().requestMatchers( "/auth/**",
-            "/email-password/**",
-            "/v2/api-docs/**",
-            "/swagger-ui/**",
-            "/swagger-resources/**",
-            "/configuration/**"
-            ).permitAll()
+    http.authorizeHttpRequests().requestMatchers( new org.springframework.security.web.util.matcher.RequestMatcher[]{} )
+            .permitAll()
             .anyRequest().authenticated();
     http.exceptionHandling().authenticationEntryPoint( jwtEntryPoint );
     http.addFilterBefore( jwtTokenFilter, UsernamePasswordAuthenticationFilter.class );
     return http.build();
-    }}
+    }
+
+
+}
