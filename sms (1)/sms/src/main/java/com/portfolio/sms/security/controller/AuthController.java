@@ -81,7 +81,7 @@ public class AuthController {
 
         JwtDto jwtDto = new JwtDto( jwt );
 
-        return new ResponseEntity( jwtDto, HttpStatus.OK );
+        return new ResponseEntity<>( jwtDto, HttpStatus.OK );
     }
 
 }
