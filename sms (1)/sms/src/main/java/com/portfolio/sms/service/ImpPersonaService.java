@@ -9,13 +9,16 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ImpPersonaService implements IPersonaService {
+
+public class ImpPersonaService implements IPersonaService  {
     @Autowired
     IPersonaRepository ipersonaRepository;
     @Override
     public List<Persona> getPersona() {
         return ipersonaRepository.findAll();
     }
+
+
 
     @Override
     public void savePersona(Persona persona) {
@@ -24,13 +27,14 @@ public class ImpPersonaService implements IPersonaService {
     }
 
     @Override
-    public void deletePersona(Long id) {
+    public  void deletePersona(Long id) {
         ipersonaRepository.deleteById(id);
     }
 
     @Override
     public Persona findPersona(Long id) {
         return ipersonaRepository.findById(id).orElse(null);
+        }
     }
-}
+
 

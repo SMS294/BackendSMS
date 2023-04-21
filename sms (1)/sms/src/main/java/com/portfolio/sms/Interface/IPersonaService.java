@@ -5,8 +5,11 @@ import com.portfolio.sms.entity.Persona;
 import java.util.List;
 
 public interface IPersonaService {
+
+
     //Traer una  lista de personas
-    List<Persona> getPersona();
+    List<Persona> getPersona() ;
+
 
     //Guardar un objeto de tipo persona
      public void savePersona (Persona persona);

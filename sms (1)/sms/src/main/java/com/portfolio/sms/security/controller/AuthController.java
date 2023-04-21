@@ -16,6 +16,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -42,13 +43,13 @@ public class AuthController {
     @PostMapping("/nuevo")
     public ResponseEntity<?> nuevo(@Valid @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult) {
         if (bindingResult.hasErrors())
-            return new ResponseEntity( new Mensaje( "campos mal puestos o email invalido" ), HttpStatus.BAD_REQUEST );
+            return new ResponseEntity<>( new Mensaje( "campos mal puestos o email invalido" ), HttpStatus.BAD_REQUEST );
 
         if (usuarioService.existsByNombreUsuario( nuevoUsuario.getNombreUsuario() ))
-            return new ResponseEntity( new Mensaje( "Ese nombre de usuario ya existe" ), HttpStatus.BAD_REQUEST );
+            return new ResponseEntity<>( new Mensaje( "Ese nombre de usuario ya existe" ), HttpStatus.BAD_REQUEST );
 
         if (usuarioService.existsByEmail( nuevoUsuario.getEmail() ))
-            return new ResponseEntity( new Mensaje( "Ese email ya existe" ), HttpStatus.BAD_REQUEST );
+            return new ResponseEntity<>( new Mensaje( "Ese email ya existe" ), HttpStatus.BAD_REQUEST );
 
         Usuario usuario =
                 new Usuario( nuevoUsuario.getNombre(), nuevoUsuario.getNombreUsuario()
@@ -61,9 +62,9 @@ public class AuthController {
         if (nuevoUsuario.getRoles().contains( "admin" ))
             roles.add( rolService.getByRolNombre( RolNombre.ROLE_ADMIN ).get() );
         usuario.setRoles( roles );
-        usuarioService.save( usuario );
+        usuarioService.save( usuario);
 
-        return new ResponseEntity( new Mensaje( "Usuario guardado" ), HttpStatus.CREATED );
+        return new ResponseEntity<>( new Mensaje( "Usuario guardado" ), HttpStatus.CREATED );
 
     }
 
@@ -79,7 +80,9 @@ public class AuthController {
         SecurityContextHolder.getContext().setAuthentication( authentication );
         String jwt = jwtProvider.generateToken( authentication );
 
-        JwtDto jwtDto = new JwtDto( jwt );
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+        JwtDto jwtDto = new JwtDto( jwt, userDetails.getUsername(), userDetails.getAuthorities() );
 
         return new ResponseEntity<>( jwtDto, HttpStatus.OK );
     }
