@@ -1,5 +1,6 @@
 package com.portfolio.sms.security.service;
 
+
 import com.portfolio.sms.security.entity.Usuario;
 import com.portfolio.sms.security.entity.UsuarioPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/personas")
-@CrossOrigin (origins = "*")
+@CrossOrigin (origins = {"http://localhost:4200"})
 public class PersonaController {
     @Autowired
     ImpPersonaService personaService;
@@ -77,7 +77,7 @@ public class PersonaController {
 
         persona.setNombre(dtopersona.getNombre());
         persona.setApellido(dtopersona.getApellido());
-        persona.setDescripcion(dtopersona.getDescripcion());
+
         persona.setImg(dtopersona.getImg());
 
         personaService.save(persona);
