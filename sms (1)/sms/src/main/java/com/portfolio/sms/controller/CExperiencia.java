@@ -47,7 +47,7 @@ public class CExperiencia {
     public ResponseEntity<?> create(@RequestBody dtoExperiencia dtoexp){
         if(StringUtils.isBlank(dtoexp.getNombreExp()))
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
-        if(serExperiencia.existsByNombreE(dtoexp.getNombreExp()))
+        if(serExperiencia.existsByNombreExp(dtoexp.getNombreExp()))
             return new ResponseEntity(new Mensaje("Esa experiencia existe"), HttpStatus.BAD_REQUEST);
 
         Experiencia experiencia = new Experiencia(dtoexp.getNombreExp(), dtoexp.getDescripcionExp());
@@ -62,7 +62,7 @@ public class CExperiencia {
         if(!serExperiencia.existsById(id))
             return new ResponseEntity(new Mensaje("El ID no existe"), HttpStatus.BAD_REQUEST);
         //Compara nombre de experiencias
-        if(serExperiencia.existsByNombreE(dtoexp.getNombreExp()) && serExperiencia.getByNombreE(dtoexp.getNombreExp()).get().getId() != id)
+        if(serExperiencia.existsByNombreExp(dtoexp.getNombreExp()) && serExperiencia.getByNombreExp(dtoexp.getNombreExp()).get().getId() != id)
             return new ResponseEntity(new Mensaje("Esa experiencia ya existe"), HttpStatus.BAD_REQUEST);
         //No puede estar vacio
         if(StringUtils.isBlank(dtoexp.getNombreExp()))

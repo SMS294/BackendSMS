@@ -3,9 +3,13 @@ package com.portfolio.sms.service;
 import com.portfolio.sms.entity.Experiencia;
 import com.portfolio.sms.repository.RepExperiencia;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
+@Service
+@Transactional
 
 public class SerExperiencia {
     @Autowired
@@ -19,8 +23,8 @@ public class SerExperiencia {
         return repExperiencia.findById(id);
     }
 
-    public Optional<Experiencia> getByNombreE(String nombreE){
-        return repExperiencia.findByNombreE(nombreE);
+    public Optional<Experiencia> getByNombreExp(String nombreExp){
+        return repExperiencia.findByNombreExp(nombreExp);
     }
 
     public void save(Experiencia expe){
@@ -35,8 +39,8 @@ public class SerExperiencia {
         return repExperiencia.existsById(id);
     }
 
-    public boolean existsByNombreE(String nombreE){
-        return repExperiencia.existsByNombreE(nombreE);
+    public boolean existsByNombreExp(String nombreExp){
+        return repExperiencia.existsByNombreExp(nombreExp);
     }
 }
 
