@@ -1,0 +1,4 @@
+FROM eclipse-temorin:1.8
+MAINTAINER SMS294
+COPY artifacts/sms__1__jar sms__1__jar
+ENTRYPOINT ["java","-jar","/sms__1__jar"]
