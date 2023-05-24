@@ -1,4 +1,0 @@
-FROM eclipse-temurin:1.8.0_362
-MAINTAINER SMS294
-COPY artifacts/sms__1__jar sms__1__jar
-ENTRYPOINT ["java","-jar","/sms__1__jar"]
