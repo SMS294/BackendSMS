@@ -14,7 +14,7 @@ import java.util.List;
 
 public class CHys {
     @RestController
-    @CrossOrigin(origins = {"http://localhost:4200"})
+    @CrossOrigin(origins = {"https://front-portfolio1.web.app"})
     @RequestMapping("/skill")
     public class cHys {
 
