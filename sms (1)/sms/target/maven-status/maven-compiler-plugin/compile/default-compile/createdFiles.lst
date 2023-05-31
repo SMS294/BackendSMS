@@ -3,6 +3,7 @@ com\portfolio\sms\Dto\dtoHys.class
 com\portfolio\sms\security\entity\UsuarioPrincipal.class
 com\portfolio\sms\entity\Educacion.class
 com\portfolio\sms\security\controller\AuthController.class
+com\portfolio\sms\Unit\CreateRoles.class
 com\portfolio\sms\security\service\RolService.class
 com\portfolio\sms\entity\Experiencia.class
 com\portfolio\sms\entity\Persona.class
