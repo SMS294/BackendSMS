@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/explab")
-@CrossOrigin(origins = {"https://front-portfolio1.web.app"})
+@CrossOrigin(origins = {"https://front-portfolio1.web.app","http://localhost:4200"})
 public class CExperiencia {
    @Autowired
     SerExperiencia serExperiencia;
