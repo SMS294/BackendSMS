@@ -28,7 +28,7 @@ public class dtoEducacion {
         return descripcionEdu;
     }
 
-    public void setDescripcionEdu(String descripcionE) {
+    public void setDescripcionEdu(String descripcionEdu) {
         this.descripcionEdu = descripcionEdu;
     }
 

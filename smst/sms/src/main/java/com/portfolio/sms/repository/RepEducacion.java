@@ -8,8 +8,8 @@ import java.util.Optional;
 
 @Repository
 public interface RepEducacion extends JpaRepository<Educacion, Integer> {
-    public Optional<Educacion>findByNombreEdu(String nombreE);
-    public boolean existsByNombreEdu(String nombreE);
+    public Optional<Educacion>findByNombreEdu(String nombreEdu);
+    public boolean existsByNombreEdu(String nombreEdu);
 }
 
 
