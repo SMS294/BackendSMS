@@ -41,23 +41,23 @@ public class PersonaController {
             return new ResponseEntity(new Mensaje("No existe el ID"), HttpStatus.NOT_FOUND);
         }
         personaService.delete(id);
-        return new ResponseEntity(new Mensaje("Educacion eliminada"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Persona eliminada"), HttpStatus.OK);
     }*/
 
     /*@PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody dtoEducacion dtoeducacion){
-        if(StringUtils.isBlank(dtoeducacion.getNombreE())){
+    public ResponseEntity<?> create(@RequestBody dtoPersona dtopersona){
+        if(StringUtils.isBlank(dtopersona.getNombre())){
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         }
-        if(personaService.existsByNombreE(dtoeducacion.getNombreE())){
+        if(personaService.existsByNombre(dtopersona.getNombre())){
             return new ResponseEntity(new Mensaje("Ese nombre ya existe"), HttpStatus.BAD_REQUEST);
         }
 
-        Educacion educacion = new Educacion(
-                dtoeducacion.getNombreE(), dtoeducacion.getDescripcionE()
+        Persona persona = new Persona(
+                dtopersona.getNombre(), dtopersona.getDescripcion()
             );
-        personaService.save(educacion);
-        return new ResponseEntity(new Mensaje("Educacion creada"), HttpStatus.OK);
+        personaService.save(persona);
+        return new ResponseEntity(new Mensaje("Persona creada"), HttpStatus.OK);
 
     }*/
 
@@ -77,7 +77,7 @@ public class PersonaController {
 
         persona.setNombre(dtopersona.getNombre());
         persona.setApellido(dtopersona.getApellido());
-
+        persona.setDescripcion(dtopersona.getDescripcion());
         persona.setImg(dtopersona.getImg());
 
         personaService.save(persona);

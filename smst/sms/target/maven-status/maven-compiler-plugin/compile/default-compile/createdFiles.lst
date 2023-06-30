@@ -9,7 +9,6 @@ com\portfolio\sms\entity\Persona.class
 com\portfolio\sms\security\service\UserDetailsServiceImpl.class
 com\portfolio\sms\service\Shys.class
 com\portfolio\sms\controller\CHys.class
-com\portfolio\sms\Interface\IPersonaService.class
 com\portfolio\sms\security\jwt\JwtEntryPoint.class
 com\portfolio\sms\Dto\dtoEducacion.class
 com\portfolio\sms\Dto\dtoExperiencia.class

@@ -14,6 +14,7 @@ import java.util.Optional;
 public class ImpPersonaService  {
     @Autowired
     IPersonaRepository ipersonaRepository;
+   
     public List<Persona> list(){
         return ipersonaRepository.findAll();
     }
