@@ -6,7 +6,6 @@ com\portfolio\sms\security\controller\AuthController.class
 com\portfolio\sms\security\service\RolService.class
 com\portfolio\sms\entity\Experiencia.class
 com\portfolio\sms\entity\Persona.class
-com\portfolio\sms\controller\CHys$cHys.class
 com\portfolio\sms\security\service\UserDetailsServiceImpl.class
 com\portfolio\sms\service\Shys.class
 com\portfolio\sms\controller\CHys.class
