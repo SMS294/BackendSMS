@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-public class CHys {
+
     @RestController
     @CrossOrigin(origins = {"https://front-portfolio1.web.app","http://localhost:4200"})
     @RequestMapping("/skill")
-    public class cHys {
+    public class CHys {
 
         @Autowired
         Shys shys;
@@ -84,5 +84,5 @@ public class CHys {
             return new ResponseEntity(new Mensaje("Skill actualizada"), HttpStatus.OK);
 
         }
-        }}
+        }
 
