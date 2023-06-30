@@ -11,7 +11,6 @@ import java.util.Optional;
 
 @Service
 @Transactional
-
 public class SerEducacion {
     @Autowired
     RepEducacion repEducacion;
@@ -24,8 +23,8 @@ public class SerEducacion {
         return repEducacion.findById(id);
     }
 
-    public Optional<Educacion> getByNombreEdu(String nombreE){
-        return repEducacion.findByNombreEdu(nombreE);
+    public Optional<Educacion> getByNombreEdu(String nombreEdu){
+        return repEducacion.findByNombreEdu(nombreEdu);
     }
 
     public void save(Educacion educacion){
@@ -40,8 +39,8 @@ public class SerEducacion {
         return repEducacion.existsById(id);
     }
 
-    public boolean existsByNombreEdu(String nombreE){
-        return repEducacion.existsByNombreEdu(nombreE);
+    public boolean existsByNombreEdu(String nombreEdu){
+        return repEducacion.existsByNombreEdu(nombreEdu);
     }
 }
 
